@@ -27,7 +27,7 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminal
+bindsym $mod+Return exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -43,10 +43,10 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ################################################################################################
 
 exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-#exec --no-startup-id pulseaudio
+#bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
-#bindsym $mod+Ctrl+m exec pavucontrol
+bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
 
@@ -56,7 +56,7 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec palemoon
+bindsym $mod+F2 exec chromium
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
@@ -148,7 +148,7 @@ set $ws3 "3:3:Result"
 set $ws4 "4:4:Terminal"
 set $ws5 "5:5:Music"
 set $ws6 "6:6:Todoist"
-set $ws7 7
+set $ws7 "7:7:Pavucontrol"
 set $ws8 8
 
 # switch to workspace
@@ -183,40 +183,10 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 
 # Open applications on specific workspaces
 for_window [class="code-oss"] move to workspace $ws1
-for_window [class="URxvt"] move to workspace $ws4
+for_window [class="Terminator"] move to workspace $ws4
 for_window [class="Spotify"] move to workspace $ws5
 for_window [class="Todoist"] move to workspace $ws6
-
-# # Open specific applications in floating mode
-# for_window [title="alsamixer"] floating enable border pixel 1
-# for_window [class="calamares"] floating enable border normal
-# for_window [class="Clipgrab"] floating enable
-# for_window [title="File Transfer*"] floating enable
-# for_window [class="Galculator"] floating enable border pixel 1
-# for_window [class="GParted"] floating enable border normal
-# for_window [title="i3_help"] floating enable sticky enable border normal
-# for_window [class="Lightdm-settings"] floating enable
-# for_window [class="Lxappearance"] floating enable sticky enable border normal
-# for_window [class="Manjaro-hello"] floating enable
-# for_window [class="Manjaro Settings Manager"] floating enable border normal
-# for_window [title="MuseScore: Play Panel"] floating enable
-# for_window [class="Nitrogen"] floating enable sticky enable border normal
-# for_window [class="Oblogout"] fullscreen enable
-# for_window [class="octopi"] floating enable
-# for_window [title="About Pale Moon"] floating enable
-# for_window [class="Pamac-manager"] floating enable
-# for_window [class="Pavucontrol"] floating enable
-# for_window [class="qt5ct"] floating enable sticky enable border normal
-# for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-# for_window [class="Simple-scan"] floating enable border normal
-# for_window [class="(?i)System-config-printer.py"] floating enable border normal
-# for_window [class="Skype"] floating enable border normal
-# for_window [class="Timeset-gui"] floating enable border normal
-# for_window [class="(?i)virtualbox"] floating enable border normal
-# for_window [class="Xfburn"] floating enable
-
-# switch to workspace with urgent window automatically
-# for_window [urgent=latest] focus
+for_window [class="Pavucontrol"] move to workspace $ws7
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -280,7 +250,9 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec ~/Todoist/todoist-linux/start.sh
-# exec --no-startup-id blueman-applet
+exec --no-startup-id blueman-applet
+exec feh --bg-scale ~/Wallpapers/bg.jpg
+exec pavucontrol
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
@@ -323,7 +295,7 @@ set_from_resource $term_color15    color15
 bar {
 	i3bar_command i3bar
 	status_command i3status
-	position bottom
+	position top
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
@@ -335,16 +307,16 @@ bar {
 	strip_workspace_numbers yes
 
     colors {
-        background #222D31
-        statusline #F9FAF9
-        separator  #454947
+        background #3F275E
+        statusline #725D8E
+        separator  #18072F
 
-#                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
+#                           border  backgr. text
+        focused_workspace  #FFFFFF #725D8E #FFFFFF
+        active_workspace   #595B5B #353836 #FFFFFF
+        inactive_workspace #595B5B #18072F #FFFFFF
+        binding_mode       #16a085 #2C2C2C #FFFFFF
+        urgent_workspace   #900000 #725D8E #FFFFFF
     }
 }
 
